@@ -1,0 +1,65 @@
+<?php
+function get_quality_type_by_itag($itag){
+		//https://en.wikipedia.org/wiki/YouTube#Quality_and_formats
+		$data = array(
+		//Non-DASH (Normal Videos)
+		'5' => array ('extension' => 'FLV', 'quality' => '240p', 'type' => 'av'),
+		'6' => array ('extension' => 'FLV', 'quality' => '270p', 'type' => 'av'),
+		'13' => array ('extension' => '3GP', 'quality' => 'Unknown Quality', 'type' => 'av'),
+		'17' => array ('extension' => '3GP', 'quality' => '144p', 'type' => 'av'),
+		'18' => array ('extension' => 'MP4', 'quality' => '360p', 'type' => 'av'),
+		'22' => array ('extension' => 'MP4', 'quality' => '720p', 'type' => 'av'),
+		'34' => array ('extension' => 'FLV', 'quality' => '360p', 'type' => 'av'),
+		'35' => array ('extension' => 'FLV', 'quality' => '480p', 'type' => 'av'),
+		'36' => array ('extension' => '3GP', 'quality' => '240p', 'type' => 'av'),
+		'37' => array ('extension' => 'MP4', 'quality' => '1080p', 'type' => 'av'),
+		'38' => array ('extension' => 'MP4', 'quality' => '3072p', 'type' => 'av'),
+		'43' => array ('extension' => 'WebM', 'quality' => '360p', 'type' => 'av'),
+		'44' => array ('extension' => 'WebM', 'quality' => '480p', 'type' => 'av'),
+		'45' => array ('extension' => 'WebM', 'quality' => '720p', 'type' => 'av'),
+		'46' => array ('extension' => 'WebM', 'quality' => '1080p', 'type' => 'av'),
+		'82' => array ('extension' => 'MP4', 'quality' => '360p', 'type' => 'av'),
+		'83' => array ('extension' => 'MP4', 'quality' => '240p', 'type' => 'av'),
+		'84' => array ('extension' => 'MP4', 'quality' => '720p', 'type' => 'av'),
+		'85' => array ('extension' => 'MP4', 'quality' => '1080p', 'type' => 'av'),
+		'100' => array ('extension' => 'WebM', 'quality' => '360p', 'type' => 'av'),
+		'101' => array ('extension' => 'WebM', 'quality' => '360p', 'type' => 'av'),
+		'102' => array ('extension' => 'WebM', 'quality' => '720p', 'type' => 'av'),
+		//DASH (video only)
+		'133' => array ('extension' => 'MP4', 'quality' => '240p', 'type' => 'v'),
+		'134' => array ('extension' => 'MP4', 'quality' => '360p', 'type' => 'v'),
+		'135' => array ('extension' => 'MP4', 'quality' => '480p', 'type' => 'v'),
+		'136' => array ('extension' => 'MP4', 'quality' => '720p', 'type' => 'v'),
+		'137' => array ('extension' => 'MP4', 'quality' => '1080p', 'type' => 'v'),
+		'138' => array ('extension' => 'MP4', 'quality' => '2160p–4320p', 'type' => 'v'),
+		'160' => array ('extension' => 'MP4', 'quality' => '144p', 'type' => 'v'),
+		'242' => array ('extension' => 'WebM', 'quality' => '240p', 'type' => 'v'),
+		'243' => array ('extension' => 'WebM', 'quality' => '360p', 'type' => 'v'),
+		'244' => array ('extension' => 'WebM', 'quality' => '480p', 'type' => 'v'),
+		'247' => array ('extension' => 'WebM', 'quality' => '720p', 'type' => 'v'),
+		'248' => array ('extension' => 'WebM', 'quality' => '1080p', 'type' => 'v'),
+		'264' => array ('extension' => 'MP4', 'quality' => '1440p', 'type' => 'v'),
+		'266' => array ('extension' => 'MP4', 'quality' => '2160p–2304p', 'type' => 'v'),
+		'271' => array ('extension' => 'WebM', 'quality' => '1440p', 'type' => 'v'),
+		'272' => array ('extension' => 'WebM', 'quality' => '2160p', 'type' => 'v'),
+		'278' => array ('extension' => 'WebM', 'quality' => '144p', 'type' => 'v'),
+		'298' => array ('extension' => 'MP4', 'quality' => '360p/720p (HFR)', 'type' => 'v'),
+		'299' => array ('extension' => 'MP4', 'quality' => '480p/1080p (HFR)', 'type' => 'v'),
+		'302' => array ('extension' => 'WebM', 'quality' => '360p/720p (HFR)', 'type' => 'v'),
+		'303' => array ('extension' => 'WebM', 'quality' => '480p/1080p (HFR)', 'type' => 'v'),
+		'308' => array ('extension' => 'WebM', 'quality' => '1440p (HFR)', 'type' => 'v'),
+		'313' => array ('extension' => 'WebM', 'quality' => '2160p', 'type' => 'v'),
+		'315' => array ('extension' => 'WebM', 'quality' => '2160p (HFR)', 'type' => 'v'),
+		//DASH (audio only)
+		'139' => array ('extension' => 'M4A', 'quality' => '48 kbit/s', 'type' => 'a'),
+		'140' => array ('extension' => 'M4A', 'quality' => '128 kbit/s', 'type' => 'a'),
+		'141' => array ('extension' => 'M4A', 'quality' => '256 kbit/s', 'type' => 'a'),
+		'171' => array ('extension' => 'WebM', 'quality' => '128 kbit/s', 'type' => 'a'),
+		'172' => array ('extension' => 'WebM', 'quality' => '192 kbit/s', 'type' => 'a'),
+		'249' => array ('extension' => 'WebM', 'quality' => '48 kbit/s', 'type' => 'a'),
+		'250' => array ('extension' => 'WebM', 'quality' => '64 kbit/s', 'type' => 'a'),
+		'251' => array ('extension' => 'WebM', 'quality' => '160 kbit/s', 'type' => 'a')
+		);
+		return $data[$itag];
+	}
+	?>
